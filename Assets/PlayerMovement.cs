@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public List<float> setPoints = new List<float>();
     public float currentSetPointVal = 0;
     private int currentSetPoint = 1;
+    public float movementSpeed = 3;
 
     private void Start()
     {
@@ -42,18 +43,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Math.Abs(gameObject.transform.localPosition.x - currentSetPointVal) > 0.01f)
         {
-            if (currentSetPointVal != 0)
-            {
-                gameObject.transform.localPosition += new Vector3(Convert.ToSingle(3.5 * setPoints[currentSetPoint]) * Time.deltaTime, 0, 0);
-            }
-            else if (gameObject.transform.localPosition.x < 0)
-            {
-                gameObject.transform.localPosition += new Vector3(7f * Time.deltaTime, 0, 0);
-            }
-            else if (gameObject.transform.localPosition.x > 0)
-            {
-                gameObject.transform.localPosition += new Vector3(-7f * Time.deltaTime, 0, 0);
-            }
+            float movement = -(gameObject.transform.localPosition.x - currentSetPointVal);
+            float difference = gameObject.transform.localPosition.x + (movement * Time.deltaTime * movementSpeed);
+            gameObject.transform.localPosition = new Vector3(difference, 1.25f, -3.36f);
+            //     if (currentSetPointVal != 0)
+            //     {
+            //         gameObject.transform.localPosition += new Vector3(Convert.ToSingle(3.5 * setPoints[currentSetPoint]) * Time.deltaTime, 0, 0);
+            //     }
+            //     else if (gameObject.transform.localPosition.x < 0)
+            //     {
+            //         gameObject.transform.localPosition += new Vector3(7f * Time.deltaTime, 0, 0);
+            //     }
+            //     else if (gameObject.transform.localPosition.x > 0)
+            //     {
+            //         gameObject.transform.localPosition += new Vector3(-7f * Time.deltaTime, 0, 0);
+            //     }
         }
         else if (gameObject.transform.localPosition.x != currentSetPoint)
         {
