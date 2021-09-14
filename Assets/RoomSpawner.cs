@@ -22,7 +22,7 @@ public class RoomSpawner : MonoBehaviour
             {
                 case 0:
                     GameObject gj1 = Instantiate(spawnableRooms[Random.Range(0, spawnableRooms.Count)], new Vector3(0, 0, 9.4f), quaternion.identity, environment.transform);
-                    //gj1.GetComponent<ObstacleSpawner>().spawnObstacles();
+                    gj1.GetComponent<ObstacleSpawner>().spawnObstacles();
                     spawnedRooms.Add(gj1);
                     break;
                 case 1:
